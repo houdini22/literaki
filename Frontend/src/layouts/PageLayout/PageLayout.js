@@ -4,22 +4,24 @@ import CSSModules from 'react-css-modules'
 import styles from './PageLayout.module.scss'
 
 class PageLayout extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+  constructor (props) {
+    super(props)
+  }
 
-    render() {
-        const {children} = this.props
-        return (
-            <div styleName='layout'>
-                {children}
-            </div>
+  render () {
+    const { children } = this.props
+    return (
+      < div
+        styleName='layout'>
+        {children}
+        <
+        /div>
         )
-    }
-}
+        }
+        }
 
-PageLayout.propTypes = {
-    children: PropTypes.node.isRequired,
-}
+        PageLayout.propTypes = {
+        children: PropTypes.node.isRequired,
+      }
 
-export default CSSModules(PageLayout, styles)
+        export default CSSModules(PageLayout, styles)

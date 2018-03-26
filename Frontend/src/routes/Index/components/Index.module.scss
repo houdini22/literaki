@@ -115,7 +115,7 @@
   font-size: 0;
   box-shadow: inset 1px 1px 10px #555;
 
-  .letter__background {
+  .letter__background, .letter__background-base {
     display: block;
     position: absolute;
     top: 0px;
@@ -124,6 +124,10 @@
     bottom: 0px;
     content: "";
     z-index: 0;
+  }
+
+  .letter__background-base {
+    background: #fff;
   }
 
   span {

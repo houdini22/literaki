@@ -13,16 +13,22 @@ class TextField extends React.Component {
     const { title, children } = this.props
 
     return (
-      <div styleName='panel'>
-        <div styleName='title'>
+      < div
+        styleName='panel'>
+        < div
+          styleName='title'>
           {title}
-        </div>
-        <div styleName='content'>
-          {children}
-        </div>
-      </div>
-    )
-  }
-}
+          <
+          /div>
+          < div
+            styleName='content'>
+            {children}
+            <
+            /div>
+            <
+            /div>
+            )
+            }
+            }
 
-export default CSSModule(TextField, styles)
+            export default CSSModule(TextField, styles)

@@ -12,13 +12,17 @@ class Card extends React.Component {
     const { children } = this.props
 
     return (
-      <div styleName='card'>
-        <div styleName='content'>
+      < div
+        styleName='card'>
+        < div
+          styleName='content'>
           {children}
-        </div>
-      </div>
-    )
-  }
-}
+          <
+          /div>
+          <
+          /div>
+          )
+          }
+          }
 
-export default CSSModule(Card, styles)
+          export default CSSModule(Card, styles)

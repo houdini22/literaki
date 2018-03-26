@@ -37,34 +37,65 @@ class Confirm extends React.Component {
     const { isOpened } = this.state
 
     return (
-      <div style={{ display: 'inline-block' }}>
-        <Modal isOpen={isOpened}>
-          <ModalHeader>Confirm</ModalHeader>
-          <ModalBody>{message}</ModalBody>
-          <ModalFooter>
-            <Button color='secondary' onClick={() => {
-              if (_.isFunction(onNo)) {
-                onNo()
-              }
-              this.close()
-            }}>Cancel</Button>
-            {' '}
-            <Button color='success' onClick={() => {
-              if (_.isFunction(onYes)) {
-                onYes()
-              }
-              this.close()
-            }}>Confirm</Button>
-          </ModalFooter>
-        </Modal>
-        <div onClick={() => {
-          this.open()
-        }}>
-          {children}
-        </div>
-      </div>
-    )
-  }
-}
+      < div
+        style={
+          {
+            display: 'inline-block'
+          }
+        }>
+        <
+          Modal
+          isOpen={isOpened}>
+          < ModalHeader> Confirm < /ModalHeader>
+            < ModalBody> {message}
+              <
+              /ModalBody>
+              < ModalFooter>
+                < Button
+                  color='secondary'
+                  onClick={()
+                    => {
+                    if (_.isFunction(onNo)) {
+                      onNo()
+                    }
+                    this.close()
+                  }
+                  }>
+                  Cancel < /Button>
+                  {
+                    ' '
+                  }
+                  <
+                    Button
+                    color='success'
+                    onClick={()
+                      => {
+                      if (_.isFunction(onYes)) {
+                        onYes()
+                      }
+                      this.close()
+                    }
+                    }>
+                    Confirm < /Button>
+                    <
+                    /ModalFooter>
+                    <
+                    /Modal>
+                    < div
+                      onClick={()
+                        => {
+                        this.open()
+                      }
+                      }>
+                      {
+                        children
+                      }
+                      <
+                      /div>
+                      <
+                      /div>
+                      )
+                      }
+                      }
 
-export default CSSModule(Confirm, styles)
+                      export default CSSModule(Confirm, styles)

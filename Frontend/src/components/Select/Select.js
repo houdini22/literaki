@@ -28,28 +28,56 @@ class Select extends React.Component {
     }
 
     return (
-      <FormGroup color={validationState}>
+      < FormGroup
+        color={validationState}>
         {label && (
-          <Label>{label}</Label>
-        )}
-        <Input {...input} {...custom} autoComplete='off' state={validationState}>
-          <option value=''>--- choose ---</option>
-          {_options.map((value) => {
-            let _value = value
-            let _label = value
-            if (_.isArray(value)) {
-              _value = value[0]
-              _label = value[1]
+          < Label> {label}
+            <
+            /Label>
+            )
             }
-            return <option key={_value} value={_value}>{_label}</option>
-          })}
-        </Input>
-        {!!error && touched && (
-          <FormFeedback>{error}</FormFeedback>
-        )}
-      </FormGroup>
-    )
-  }
-}
+        <
+          Input
+          {...
+            input
+          }
+          {...
+            custom
+          }
+          autoComplete='off'
+          state={validationState}>
+          < option
+            value=''> ---choose-- - < /option>
+            {
+              _options.map((value) => {
+                let _value = value
+                let _label = value
+                if (_.isArray(value)) {
+                  _value = value[0]
+                  _label = value[1]
+                }
+                return
+                <
+                  option
+                  key={_value}
+                  value={_value}> {_label}
+                  <
+                  /option>
+                  })
+                  }
+            <
+            /Input>
+            {
+              !!error && touched && (
+                < FormFeedback> {error}
+                  <
+                  /FormFeedback>
+                  )
+                  }
+            <
+            /FormGroup>
+            )
+            }
+            }
 
-export default CSSModule(Select, styles)
+            export default CSSModule(Select, styles)

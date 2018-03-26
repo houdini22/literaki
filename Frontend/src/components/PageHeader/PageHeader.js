@@ -14,20 +14,28 @@ class PageHeader extends React.Component {
     const { children, isLoading } = this.props
 
     return (
-      <h3 styleName='page-header'>
-        <span styleName='page-header-caption'>
-          {children}
-        </span>
-        {(isLoading) && (
-          <span styleName='page-header-loading-container'>
-            <LoadingOverlay
-              size='xs'
-              noBackground
-            />
-          </span>
-        )}
-      </h3>
+      < h3
+        styleName='page-header'>
+      < span
+        styleName='page-header-caption'>
+      {children}
+        <
+        /span>
+    {
+      (isLoading) && (
+        < span
+          styleName='page-header-loading-container'>
+        < LoadingOverlay
+          size='xs'
+          noBackground
+          / >
+          <
+          /span>
     )
+    }
+        <
+        /h3>
+  )
   }
 }
 

@@ -1,9 +1,9 @@
 import auth from './auth'
 import common from './common'
-import game from './game';
+import game from './game'
 
 export {
-    auth,
-    common,
-    game,
+  auth,
+  common,
+  game,
 }

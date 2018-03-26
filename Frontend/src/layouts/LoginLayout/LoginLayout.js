@@ -9,17 +9,20 @@ class PageLayout extends React.Component {
     const { children } = this.props
 
     return (
-      <div styleName='layout'>
-        <Container>
+      < div
+        styleName='layout'>
+        < Container>
           {children}
-        </Container>
-      </div>
-    )
-  }
-}
+          <
+          /Container>
+          <
+          /div>
+          )
+          }
+          }
 
-PageLayout.propTypes = {
-  children: PropTypes.node.isRequired
-}
+          PageLayout.propTypes = {
+          children: PropTypes.node.isRequired
+        }
 
-export default CSSModules(PageLayout, styles)
+          export default CSSModules(PageLayout, styles)

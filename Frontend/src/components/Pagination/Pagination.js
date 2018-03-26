@@ -16,52 +16,85 @@ class Pagination extends React.Component {
     const { currentPage } = this.state
 
     return (
-      <div>
-        <div className={styles['total-items']}>
+      < div>
+        < div
+          className={styles['total-items']}>
           {totalItems > 0 && (
-            <span>
-              Showing {currentPage * limit + 1}{' '}
-              to {Math.min(currentPage * limit + limit, totalItems)}{' '}
-              of {totalItems}{' '}
+            < span>
+      Showing
+              {
+                currentPage * limit + 1
+              }
+              {
+                ' '
+              }
+              to
+              {
+                Math.min(currentPage * limit + limit, totalItems)
+              }
+              {
+                ' '
+              }
+              of
+              {
+                totalItems
+              }
+              {
+                ' '
+              }
               entries.
-            </span>
-          )}
-          {totalItems === 0 && (
-            <span>
-              No entries
-            </span>
-          )}
-        </div>
-        {pageCount > 1 && (
-          <ReactPaginate
-            previousLabel={'previous'}
-            nextLabel={'next'}
-            pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={({ selected }) => {
-              this.setState({
-                currentPage: selected
-              })
-              onPageChange({ selected })
-            }}
-            containerClassName={styles.pagination}
-            subContainerClassName={styles.pages}
-            activeClassName={styles.active}
-            disabledClassName={styles.disabled}
-            forcePage={currentPage}
-          />
-        )}
-      </div>
-    )
+    < /span>
+  )
   }
-}
+          {
+            totalItems === 0 && (
+              < span>
+      No
+      entries
+      < /span>
+    )
+    }
+          <
+          /div>
+          {
+            pageCount > 1 && (
+              < ReactPaginate
+                previousLabel={'previous'}
+                nextLabel={'next'}
+                pageCount={pageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={({ selected })
+                  => {
+                  this.setState({
+                    currentPage: selected
+                  })
+                  onPageChange({ selected })
+                }
+                }
+                containerClassName={styles.pagination
+                }
+                subContainerClassName={styles.pages
+                }
+                activeClassName={styles.active
+                }
+                disabledClassName={styles.disabled
+                }
+                forcePage={currentPage}
+              />
+            )
+          }
+          <
+          /div>
+          )
+          }
+          }
 
-Pagination.propTypes = {
-  onPageChange: PropTypes.func.isRequired,
-  pageCount: PropTypes.number.isRequired,
-  limit: PropTypes.number,
-  totalItems: PropTypes.number,
-}
+          Pagination.propTypes = {
+          onPageChange: PropTypes.func.isRequired,
+          pageCount: PropTypes.number.isRequired,
+          limit: PropTypes.number,
+          totalItems: PropTypes.number,
+        }
 
-export default Pagination
+          export default Pagination

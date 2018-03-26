@@ -15,19 +15,27 @@ class IconBox extends React.Component {
     const { icon, children, isLoading, } = this.props
 
     return (
-      <div styleName='icon-box'>
-        <div styleName='icon-box-icon'>
+      < div
+        styleName='icon-box'>
+        < div
+          styleName='icon-box-icon'>
           {icon}
-        </div>
-        <div styleName='icon-box-content'>
-          {children}
-        </div>
-        {isLoading && (
-          <LoadingOverlay/>
-        )}
-      </div>
-    )
-  }
-}
+          <
+          /div>
+          < div
+            styleName='icon-box-content'>
+            {children}
+            <
+            /div>
+            {
+              isLoading && (
+                < LoadingOverlay / >
+              )
+              }
+            <
+            /div>
+            )
+            }
+            }
 
-export default CSSModule(IconBox, styles)
+            export default CSSModule(IconBox, styles)

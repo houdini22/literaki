@@ -15,41 +15,64 @@ class FilePreview extends React.Component {
     const { fileInfo, highlightFirstRow } = this.props
 
     return (
-      <Fieldset title='File preview'>
-        <div styleName='table-container-outer'>
-          <div styleName='table-container-inner'>
+      < Fieldset
+        title='File preview'>
+        < div
+          styleName='table-container-outer'>
+          < div
+            styleName='table-container-inner'>
             {(fileInfo && fileInfo.firstRows) && (
-              <Table styleName='table' style={{ width: `${fileInfo.firstRows[0].length * 300}px` }}>
-                <tbody>
+              < Table
+                styleName='table'
+                style={
+                  {
+                    width: `${fileInfo.firstRows[0].length * 300}px`
+                  }
+                }>
+                <
+                  tbody>
                 {fileInfo.firstRows && fileInfo.firstRows.map((row, i) => {
                   return (
-                    <tr
-                      className={i === 0 && highlightFirstRow ? 'background-red shaded' : ''}
+                    < tr
+                      className={i === 0 && highlightFirstRow ? 'background-red shaded' : ''
+                      }
                       key={i}
                     >
                       {row.map((column, j) => {
                         return (
-                          <td
+                          < td
                             key={j}
                           >
                             {column}
-                          </td>
-                        )
-                      })}
-                    </tr>
-                  )
-                })}
-                </tbody>
-              </Table>
-            )}
-          </div>
-        </div>
-        {(!fileInfo.firstRows) && (
-          <LoadingOverlay />
-        )}
-      </Fieldset>
-    )
-  }
-}
+                            <
+                            /td>
+                            )
+                            })
+                            }
+                      <
+                      /tr>
+                      )
+                      })
+                      }
+                <
+                /tbody>
+                <
+                /Table>
+                )
+                }
+            <
+            /div>
+            <
+            /div>
+            {
+              (!fileInfo.firstRows) && (
+                < LoadingOverlay / >
+              )
+              }
+            <
+            /Fieldset>
+            )
+            }
+            }
 
-export default CSSModule(FilePreview, styles)
+            export default CSSModule(FilePreview, styles)
