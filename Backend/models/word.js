@@ -1,11 +1,11 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../modules/database-new/connection').getSequelizeConnection();
+const Sequelize = require('sequelize')
+const sequelize = require('../modules/database-new/connection').getSequelizeConnection()
 
 const Word = sequelize.define('words', {
-    word: Sequelize.STRING,
+  word: Sequelize.STRING,
 }, {
-    timestamps: false,
-});
+  timestamps: false,
+})
 
-exports.model = Word;
-exports.sequelize = sequelize;
+exports.model = Word
+exports.sequelize = sequelize

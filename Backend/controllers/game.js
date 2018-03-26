@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const _ = require('lodash')
-const DB = require('../modules/database-new/connection')
+const getSequelizeConnection = require('../modules/database-new/connection').getSequelizeConnection
 const WordModel = require('../models/word').model
 const Sequelize = require('../models/word').sequelize
 
@@ -168,12 +168,13 @@ const hasAloneLetter = (board) => {
 }
 const getWordsCountFromDatabase = async (words) => {
   return new Promise((resolve) => {
-    WordModel.count({
-      where: {
-        word: { [Sequelize.Op.or]: words }
-      }
-    }).then((result) => {
-      resolve(result)
+    let query = 'SELECT count(*) as count from words WHERE '
+    query += words.map((word) => {
+      return `word COLLATE utf8_polish_ci LIKE '${word.replace(/[!@#$%^&*()'"{}\[\]<>?/.,]/g, '')}'`
+    }).join(' OR ') + ' LIMIT 1';
+
+    getSequelizeConnection().query(query).then((response) => {
+      resolve(response[0][0].count)
     })
   })
 }
@@ -237,9 +238,18 @@ router.post('/move', async (req, res) => {
   }
 
   const words = findWordsInBoard(board)
-  const existingsWords = await getWordsCountFromDatabase(words)
+  const existingsWordsNum = await getWordsCountFromDatabase(words)
+  if (words.length !== existingsWordsNum) {
+    res.status(422)
+    return res.json({
+      status: 'ERR',
+      error: {
+        message: 'Jedno ze słów jest nieprawidłowe.',
+      }
+    })
+  }
 
-  console.log(words, existingsWords)
+  console.log(words, existingsWordsNum)
 })
 
 exports.router = router

@@ -96,7 +96,15 @@ const createSequelizeConnection = () => {
   const sequelize = new Sequelize(config.database, config.user, config.password, {
     host: config.host,
     dialect: 'mysql',
-
+    define: {
+      underscored: false,
+      freezeTableName: false,
+      charset: 'utf8',
+      dialectOptions: {
+        collate: 'utf8_polish_ci'
+      },
+      timestamps: true
+    },
     pool: {
       max: 5,
       min: 0,
