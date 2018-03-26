@@ -1,0 +1,32 @@
+@import '~styles/variables';
+
+.field {
+  margin-bottom: 15px;
+  text-align: left;
+  width: 100%;
+}
+
+.has-error {
+  input {
+    border: 1px solid $color4;
+  }
+}
+
+.label {
+  color: $color1;
+  font-size: 16px;
+  height: 38px;
+  line-height: 38px;
+  padding-left: 42px;
+}
+
+.form-feedback {
+  font-size: 11px;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  margin-left: -42px;
+  margin-top: 6px;
+}

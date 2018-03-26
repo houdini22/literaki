@@ -1,0 +1,113 @@
+@import '_variables.scss';
+@import '~bootstrap/scss/mixins/_breakpoints.scss';
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.btn-sm {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.675rem;
+}
+
+.btn-success {
+  color: #fff;
+}
+
+[data-reactroot] {
+  height: 100% !important;
+}
+
+.form-actions {
+  & > * {
+    margin-right: 8px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.buttons-row {
+  margin-top: 25px;
+}
+
+.background-red {
+  background-color: $color4;
+}
+
+.btn-xs {
+  font-size: .7rem;
+}
+
+.shaded {
+  opacity: 0.4;
+}
+
+.page-content {
+  padding: 15px;
+  animation-name: slideIn;
+  animation-duration: .3s;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(5px);
+    opacity: .3;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.table {
+  thead {
+    background: #fff;
+  }
+  tbody {
+    .actions {
+      .btn {
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  td, th {
+    padding: 0.2rem;
+  }
+  tfoot {
+    background: #fff;
+  }
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.badge-success {
+  color: #fff;
+}
+
+.text-sm {
+  font-size: 85%;
+}
+
+.hidden-xs {
+  @include media-breakpoint-only(xs) {
+    display: none;
+  }
+}
+
+.hidden-sm {
+  @include media-breakpoint-only(sm) {
+    display: none;
+  }
+}
