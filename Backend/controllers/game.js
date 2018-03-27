@@ -44,6 +44,16 @@ const generateLetters = () => {
 
   return _.shuffle(result)
 }
+const count = (array) => {
+  const result = {}
+  array.forEach((letter) => {
+    if (!result[letter]) {
+      result[letter] = 0
+    }
+    result[letter]++
+  })
+  return result
+}
 const validateNewLetters = (board, availableLetters) => {
   const newLetters = []
   board.forEach((y) => {
@@ -53,16 +63,6 @@ const validateNewLetters = (board, availableLetters) => {
       }
     })
   })
-  const count = (array) => {
-    const result = {}
-    array.forEach((letter) => {
-      if (!result[letter]) {
-        result[letter] = 0
-      }
-      result[letter]++
-    })
-    return result
-  }
 
   const obj1 = count(newLetters)
   const obj2 = count(availableLetters)
@@ -171,12 +171,49 @@ const getWordsCountFromDatabase = async (words) => {
     let query = 'SELECT count(*) as count from words WHERE '
     query += words.map((word) => {
       return `word COLLATE utf8_polish_ci LIKE '${word.replace(/[!@#$%^&*()'"{}\[\]<>?/.,]/g, '')}'`
-    }).join(' OR ') + ' LIMIT 1';
+    }).join(' OR ') + ' LIMIT 1'
 
     getSequelizeConnection().query(query).then((response) => {
       resolve(response[0][0].count)
     })
   })
+}
+const getPossibleWords = (word, botLetters) => {
+  const regexps = getRegularExpressions(word, botLetters)
+  let query = 'SELECT * from words WHERE '
+  regexps.forEach((obj, i) => {
+    query += `(word REGEXP '${obj['regex1']}' AND NOT word REGEXP '${obj['regex2']}') `
+    if (i + 1 < regexps.length) {
+      query += ' OR '
+    }
+  })
+  getSequelizeConnection().query(query).then((response) => {
+    console.log(response)
+  })
+  console.log(query)
+  console.log(regexps)
+}
+const getRegularExpressions = (word, botLetters) => {
+  const result = []
+  word.split('').forEach((letter, i) => {
+    let letters = [...botLetters].concat([letter])
+    const lettersCount = count(letters)
+    letters = _.uniq(letters)
+    const regexLength = 1 + letters.length
+    let regex1 = `^[${letters.join('')}]{1,${regexLength}}$`
+    let regex2 = ''
+    letters.forEach((letter) => {
+      let _count = lettersCount[letter]
+      regex2 += `${letter}(.*${letter}){${_count}}|`
+    })
+    regex2 = regex2.substring(0, regex2.length - 1)
+    result.push({
+      regex1,
+      regex2,
+      position: {}
+    })
+  })
+  return result
 }
 
 router.get('/start', async (req, res) => {
@@ -249,7 +286,13 @@ router.post('/move', async (req, res) => {
     })
   }
 
+  const botLetters = data['botLetters'].slice(0, 7)
+  words.forEach((word) => {
+    getPossibleWords(word, botLetters)
+  })
+
   console.log(words, existingsWordsNum)
+  console.log('Bot letters', botLetters)
 })
 
 exports.router = router
